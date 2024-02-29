@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/cubits/get_weather_cubit/cubit/get_waether_cubit.dart';
+import 'package:weather_app/views/homeView.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/screens/HomePadge.dart';
 
 void main() {
   runApp(const WeatherApp());
@@ -13,19 +13,19 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetWeatherCubit(),
+      create: (context) => GetWaetherCubit(),
       child: Builder(
-        builder: (context) => BlocBuilder<GetWeatherCubit, GetWeatherState>(
+        builder: (context) => BlocBuilder<GetWaetherCubit, GetWaetherState>(
           builder: (context, state) {
             return MaterialApp(
               theme: ThemeData(
-                primarySwatch: getThemeColor(
-                    BlocProvider.of<GetWeatherCubit>(context)
+                primaryColor: getThemeColor(
+                    BlocProvider.of<GetWaetherCubit>(context)
                         .weatherModel
-                        ?.condition),
+                        ?.weatherCondetion),
               ),
               debugShowCheckedModeBanner: false,
-              home: HomePadge(),
+              home: const HomeView(),
             );
           },
         ),
@@ -35,6 +35,7 @@ class WeatherApp extends StatelessWidget {
 }
 
 MaterialColor getThemeColor(String? condition) {
+  // ignore: unrelated_type_equality_checks
   if (condition == Null) {
     return Colors.blue;
   }
@@ -47,9 +48,9 @@ MaterialColor getThemeColor(String? condition) {
     case 'Cloudy':
     case 'Fog':
     case 'Freezing fog':
-      return Colors.grey;
     case 'Overcast':
-      return Colors.blueGrey;
+      return Colors.grey;
+
     case 'Mist':
       return Colors.indigo;
     case 'Patchy rain possible':
