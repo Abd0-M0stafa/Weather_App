@@ -5,6 +5,6 @@ sealed class GetWaetherState {}
 
 final class Initial extends GetWaetherState {}
 
-final class WeatherLoadedState extends GetWaetherState {}
+final class WeathersuccessState extends GetWaetherState {}
 
 final class WeatherFailureState extends GetWaetherState {}
