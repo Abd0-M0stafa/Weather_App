@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/cubits/get_weather_cubit/cubit/get_waether_cubit.dart';
-import 'package:weather_app/views/homeView.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/views/splash/presentation/views/splash_view.dart';
 
 void main() {
   runApp(const WeatherApp());
@@ -24,7 +24,7 @@ class WeatherApp extends StatelessWidget {
                       ?.weatherCondetion),
             ),
             debugShowCheckedModeBanner: false,
-            home: const HomeView(),
+            home: const SplashView(),
           );
         },
       ),
